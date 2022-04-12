@@ -1,0 +1,24 @@
+[default]
+VERSION='local'
+
+[default.security]
+# Set secret key in .secrets.toml
+# SECRET_KEY = ""
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+[default.server]
+port = 6776
+host = "0.0.0.0"
+log_level = "info"
+reload = false
+
+[default.db]
+uri = "@jinja sqlite:///{{ this.current_env | lower }}.db"
+connect_args = {check_same_thread=false}
+echo = false
+
+[default.kafka]
+topic='streaming'
+group='ai-model18'
+bootstrap_servers='42.119.139.251:6092,42.119.139.251:6093'
